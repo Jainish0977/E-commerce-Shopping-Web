@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jakie-Shoe Store</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">Jakie-Shoes</h1>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#productList">Products</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+        <div class="search-cart">
+          <input type="text" id="searchBar" placeholder="Search for shoes..." />
+          <div class="cart">🛒 <span id="cart-count">0</span></div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="filters">
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+          <option value="sneakers">Sneakers</option>
+          <option value="boots">Boots</option>
+          <option value="sports">Sports</option>
+          <option value="loafers">Loafers</option>
+          <option value="sandals">Sandals</option>
+          <option value="hiking">Hiking & Trekking Shoes</option>
+          <option value="flip-flops">Flip Flops</option>
+          <option value="clogs">Clogs</option>
+        </select>
+
+        <select id="sizeFilter">
+          <option value="">All Sizes</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+
+        <select id="colorFilter">
+          <option value="">All Colors</option>
+          <option value="black">Black</option>
+          <option value="white">White</option>
+          <option value="red">Red</option>
+        </select>
+
+        <select id="soleFilter">
+          <option value="">All Soles</option>
+          <option value="rubber">Rubber</option>
+          <option value="foam">Foam</option>
+          <option value="leather">Leather</option>
+        </select>
+      </section>    
+
+      <section class="product-list" id="productList">
+        <!-- Products will be populated here -->
+      </section>
+    </main><br><br><hr height="8px" color="black" width="100%">
+
+    <section id="about" class="about-us">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>
+          Welcome to <strong>SoleStyle</strong>, your one-stop destination for high-quality footwear designed to fit every lifestyle.
+          Whether you're hitting the trails, stepping into the office, or just chilling on the weekend, we've got the perfect pair for you.
+        </p>
+        <p>
+          At SoleStyle, we believe shoes are more than just fashion—they’re a statement of comfort, confidence, and personality.
+          That’s why we offer a wide variety of styles for men and women, including sneakers, boots, loafers, sandals, sports shoes, and more.
+        </p>
+        <h3>What makes us different?</h3>
+        <ul>
+          <li><strong>Curated Collections:</strong> Carefully selected for quality, durability, and design.</li>
+          <li><strong>Smart Offers:</strong> Enjoy deals like free socks when you buy 4 pairs!</li>
+          <li><strong>Easy Shopping Experience:</strong> Simple filters and a smooth cart system.</li>
+          <li><strong>Customer First:</strong> Your satisfaction is our top priority.</li>
+        </ul>
+        <p>Thank you for choosing us. Walk with style. Walk with confidence.</p>
+      </div>
+    </section>  
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -33,7 +33,7 @@ const shoeImages = [
   "women_sneakers.jpg",
 ];
 
-const products = Array.from({ length: 30 }, (_, i) => {
+const products = Array.from({ length: 10 }, (_, i) => {
   const sizes = ["7", "8", "9", "10"];
   const colors = ["black", "white", "red", "blue", "green"];
   const soles = ["rubber", "foam", "leather"];

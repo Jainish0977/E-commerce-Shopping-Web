@@ -5,6 +5,13 @@ body {
   padding: 0;
   background-color: #f4f4f4;
   color: #333;
+  background: url('') no-repeat center center fixed;
+  background-size: cover;
+  background: linear-gradient(to right, #f4f4f4, #eaeaea); /* subtle gradient */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+
 }
 
 /* Navbar */
@@ -63,18 +70,24 @@ main {
   max-width: 800px;
   margin: 30px auto;
   background: white;
-  padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   border-radius: 10px;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 1200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Filters */
 .filters {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
   background-color: #fff;
+  padding: 1rem;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1rem;
 }
 
 #searchBar {
@@ -186,11 +199,17 @@ button.add-to-cart {
 
 /* About Us Section */
 .about-us {
-  background-color: #f9f9f9;
-  padding: 40px 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+  padding: 50px 20px;
+  margin-top: 40px;
+  border-top: 2px solid #ccc;
 }
 
 .about-us .container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -220,4 +239,11 @@ button.add-to-cart {
 
 .about-us li {
   margin-bottom: 8px;
+}
+
+hr {
+  border: none;
+  height: 4px;
+  background-color: #ccc;
+  margin: 40px 0;
 }

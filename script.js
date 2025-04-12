@@ -1,78 +1,84 @@
-const shoeNames = [
-  "Black Sneakers",
-  "Boot Men",
-  "Boot Women",
-  "Clogs Men",
-  "Clogs Women",
-  "Flip Flop Men",
-  "Flip Flop Women",
-  "Hiking",
-  "Loafers Men",
-  "Sandal Men",
-  "Sandal Women",
-  "Socks",
-  "Sport Men",
-  "Sport Women",
-  "Women Sneakers",
-];
-const shoeImages = [
-  "black_sneakers.jpg",
-  "boot_men.jpg",
-  "boot_women.jpg",
-  "clogs_men.jpg",
-  "clogs_women.jpg",
-  "flip_flop_men.jpg",
-  "flip_flop_women.jpg",
-  "hiking.jpg",
-  "loafers_men.jpg",
-  "sandal_men.jpg",
-  "sandal_women.jpg",
-  "socks.jpg",
-  "sport_men.jpg",
-  "sport_women.jpg",
-  "women_sneakers.jpg",
-];
+let products = JSON.parse(localStorage.getItem("products"));
+if (!products) {
+  const shoeNames = [
+    "Black Sneakers",
+    "Boot Men",
+    "Boot Women",
+    "Clogs Men",
+    "Clogs Women",
+    "Flip Flop Men",
+    "Flip Flop Women",
+    "Hiking",
+    "Loafers Men",
+    "Sandal Men",
+    "Sandal Women",
+    "Socks",
+    "Sport Men",
+    "Sport Women",
+    "Women Sneakers",
+  ];
+  const shoeImages = [
+    "black_sneakers.jpg",
+    "boot_men.jpg",
+    "boot_women.jpg",
+    "clogs_men.jpg",
+    "clogs_women.jpg",
+    "flip_flop_men.jpg",
+    "flip_flop_women.jpg",
+    "hiking.jpg",
+    "loafers_men.jpg",
+    "sandal_men.jpg",
+    "sandal_women.jpg",
+    "socks.jpg",
+    "sport_men.jpg",
+    "sport_women.jpg",
+    "women_sneakers.jpg",
+  ];
 
-const products = Array.from({ length: 10 }, (_, i) => {
-  const sizes = ["7", "8", "9", "10"];
-  const colors = ["black", "white", "red", "blue", "green"];
-  const soles = ["rubber", "foam", "leather"];
+  products = Array.from({ length: 10 }, (_, i) => {
+    const sizes = ["7", "8", "9", "10"];
+    const colors = ["black", "white", "red", "blue", "green"];
+    const soles = ["rubber", "foam", "leather"];
 
-  const id = i + 1;
-  const name = shoeNames[i % shoeNames.length];
-  const image = `images/${shoeImages[i % shoeImages.length]}`;
+    const id = i + 1;
+    const name = shoeNames[i % shoeNames.length];
+    const image = `images/${shoeImages[i % shoeImages.length]}`;
 
-  // Dynamically determine category from the name
-  const lowerName = name.toLowerCase();
-  let category = "";
-  if (lowerName.includes("sneaker")) category = "sneakers";
-  else if (lowerName.includes("boot")) category = "boots";
-  else if (lowerName.includes("clog")) category = "clogs";
-  else if (lowerName.includes("flip flop")) category = "flip-flops";
-  else if (lowerName.includes("hiking")) category = "hiking";
-  else if (lowerName.includes("loafers")) category = "loafers";
-  else if (lowerName.includes("sandal")) category = "sandals";
-  else if (lowerName.includes("sport")) category = "sports";
-  else category = "others";
+    // Determine category from name
+    const lowerName = name.toLowerCase();
+    let category = "";
+    if (lowerName.includes("sneaker")) category = "sneakers";
+    else if (lowerName.includes("boot")) category = "boots";
+    else if (lowerName.includes("clog")) category = "clogs";
+    else if (lowerName.includes("flip flop")) category = "flip-flops";
+    else if (lowerName.includes("hiking")) category = "hiking";
+    else if (lowerName.includes("loafers")) category = "loafers";
+    else if (lowerName.includes("sandal")) category = "sandals";
+    else if (lowerName.includes("sport")) category = "sports";
+    else category = "others";
 
-  const size = sizes[Math.floor(Math.random() * sizes.length)];
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  const sole = soles[Math.floor(Math.random() * soles.length)];
-  const price = (Math.random() * 100 + 20).toFixed(2);
-  const discount = Math.random() < 0.3;
+    // Only generate once
+    const size = sizes[Math.floor(Math.random() * sizes.length)];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const sole = soles[Math.floor(Math.random() * soles.length)];
+    const price = (Math.random() * 100 + 20).toFixed(2);
+    const discount = Math.random() < 0.3;
 
-  return {
-    id,
-    name,
-    category,
-    size,
-    color,
-    sole,
-    price: parseFloat(price),
-    discount,
-    image,
-  };
-});
+    return {
+      id,
+      name,
+      category,
+      size,
+      color,
+      sole,
+      price: parseFloat(price),
+      discount,
+      image,
+    };
+  });
+
+  localStorage.setItem("products", JSON.stringify(products));
+}
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -153,6 +159,31 @@ updateCartIcon();
 document.querySelector(".cart").addEventListener("click", () => {
   window.location.href = "cart.html";
 });
+
+const avatar = document.getElementById("user-avatar");
+const dropdown = document.getElementById("user-dropdown");
+
+avatar.addEventListener("click", () => {
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+});
+
+// Close dropdown when clicking outside
+window.addEventListener("click", function (e) {
+  if (!avatar.contains(e.target) && !dropdown.contains(e.target)) {
+    dropdown.style.display = "none";
+  }
+});
+
+// Load user info
+const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+if (loggedInUser) {
+  document.getElementById("user-info-name").textContent = loggedInUser.name || "User";
+  document.getElementById("user-info-email").textContent = loggedInUser.email;
+  if (loggedInUser.image) {
+    document.getElementById("user-avatar").src = loggedInUser.image;
+    document.getElementById("user-info-pic").src = loggedInUser.image;
+  }
+}
 
 // Back to Top Button
 const backToTop = document.createElement("button");
